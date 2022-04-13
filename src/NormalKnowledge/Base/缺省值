@@ -1,0 +1,51 @@
+缺省值也叫默认值：
+    举个例子：
+        <!--使用以下标签可以配置过滤器的过滤规则，缺省值(默认值)是:request-->
+        <dispatcher>REQUEST</dispatcher><!--表示过滤器需要过滤请求，此标签是默认的缺省值，不写就默认是此标签-->
+        <dispatcher>FORWARD</dispatcher><!--表示过滤器需要过滤转发-->
+
+        这个过滤器没有任何可以配置过滤器的过滤规则标签时，会提供一个默认的标签：
+            <filter>
+                <filter-name>Filter01</filter-name>
+                <filter-class>filter.Filter01</filter-class>
+            </filter>
+            <filter-mapping>
+                <filter-name>Filter01</filter-name>
+                <url-pattern>/*.action</url-pattern>
+            </filter-mapping>
+        所以提供的默认标签是<dispatcher>REQUEST</dispatcher>
+        即
+            <filter>
+                <filter-name>Filter01</filter-name>
+                <filter-class>filter.Filter01</filter-class>
+            </filter>
+            <filter-mapping>
+                <filter-name>Filter01</filter-name>
+                <url-pattern>/*.action</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+            </filter-mapping>
+
+        如果该过滤器有其他的标签，则缺省标签失效
+            <filter>
+                <filter-name>Filter01</filter-name>
+                <filter-class>filter.Filter01</filter-class>
+            </filter>
+            <filter-mapping>
+                <filter-name>Filter01</filter-name>
+                <url-pattern>/*.action</url-pattern>
+                <dispatcher>FORWARD</dispatcher>
+            </filter-mapping>
+
+        如何在已有标签的基础上激活缺省标签？
+            那就都写出来
+            <filter>
+                <filter-name>Filter01</filter-name>
+                <filter-class>filter.Filter01</filter-class>
+            </filter>
+            <filter-mapping>
+                <filter-name>Filter01</filter-name>
+                <url-pattern>/*.action</url-pattern>
+                <dispatcher>FORWARD</dispatcher>
+                <dispatcher>REQUEST</dispatcher>
+            </filter-mapping>
+所以缺省总结就一句话：没有就提，有就失效，要想缺省生效那就都写出来

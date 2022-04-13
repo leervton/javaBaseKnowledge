@@ -1,0 +1,109 @@
+阿里云镜像仓库配置
+    <mirror>
+      <id>alimaven</id>
+      <name>aliyun maven</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+
+servlet-api.jar 是servlet 3.0 版本之前的地址
+javax.servlet-api.jar 是servlet 3.0 版本之后的地址
+
+    <!--servlet依赖-->
+     javax.servlet-api
+
+    <!--jsp依赖-->
+    jsp-api
+
+    <!--springmvc依赖-->
+    spring-webmvc
+ ===============spring-webmvc依赖，间接的把spring的依赖都加入到项目中==================
+    <!--spring核心IOC-->
+    spring-context
+
+    <!--为了使用监听器对象，加入依赖-->
+    spring-web
+
+    <!--事务-->
+    spring-tx
+    spring-jdbc
+ =========================================================================================
+    <!--aspectJ依赖-->
+    spring-aspects
+
+
+    <!--mybatis依赖-->
+    mybatis
+    <!--spring框架整合mybatis依赖-->
+     mybatis-spring
+
+    <!--ajax依赖-->
+    jackson-core
+    jackson-databind
+
+    <!--mysql驱动-->
+    mysql-connector-java
+
+    <!--德鲁伊连接池-->
+    druid
+
+    <!--jackson依赖-->
+    做java对象转json格式数据的
+    jackson-core
+    jackson-databind
+    jackson-annotations
+    或者
+    com.alibaba的fastjson
+
+    <!--redis依赖-->
+    redis.clients
+
+    <!--log4j日志依赖-->
+    https://blog.csdn.net/SIMBA1949/article/details/79180089
+    commons-logging
+    log4j-api
+    log4j-core
+    slf4j-log4j12
+
+
+    <!--配置Maven 对resource文件 过滤 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+             </resource>
+             <resource>
+                 <directory>src/main/java</directory>
+                 <includes>
+                     <include>**/*.properties</include>
+                     <include>**/*.xml</include>
+                 </includes>
+                 <filtering>true</filtering>
+             </resource>
+         </resources>
+
+ 读取属性配置文件扫描器
+ <context:property-placeholder location="classpath:jdbc.properties"/>
+
+ 组件扫描器
+ <context:component-scan base-package="org.example.ba01"/>
+
+ <!--
+    声明自动代理生成器：使用aspectJ框架内部的功能，创建目标对象的代理对象
+    创建代理对象是在内存中实现的，修改目标对象内存中的结构，创建其代理对象
+    所以目标对象就是一个被修改后的代理对象
+
+    aspectj-autoproxy：它会把spring容器中的所有的目标对象，一次性都生成代理对象
+  -->
+ <aop:aspectj-autoproxy/>
+
+
+ 注解驱动实现的功能是完成java对象到json，xml，text，二进制等数据格式的转换。
+ HttpMessageConverter接口：消息转换器。
+ 功能：定义了java转为json，xml等数据格式的方法。这个接口有很多的实现类。
+ 这些实现类完成 java对象多json，java对象到xml，java对象到二进制数据的转换
+ <mvc:annotation-driven/>

@@ -1,0 +1,5 @@
+source root 类路径，又叫做资源路径 NormalKnowledge\Base\路径\路径名称
+
+content root 根路径  src\NormalKnowledge\Base\路径\路径名称
+
+absolute root 绝对路径 C:\Users\lee45\IdeaProjects\JAVASE_Java\src\NormalKnowledge\Base\路径\路径名称

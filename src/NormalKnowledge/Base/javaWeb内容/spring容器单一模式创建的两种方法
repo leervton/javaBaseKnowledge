@@ -1,0 +1,64 @@
+因为applicationContext的空间占用大，所以我们需要在服务器创建开始就创建一个spring容器对象放入servlet的全局作用域中
+1.这里我们可以利用spring已经写好的监听器监听servlet初始化，然后创建容器对象放入全局作用域中
+   利用web.xml配置
+    案例：FrameWork_业务逻辑层框架_Spring框架_14_搭建web项目环境\src\main\webapp\WEB-INF\web.xml
+
+    <!--注册监听器ContextLoaderListener
+                被创建对象后，会读取/WEB-INF/applicationContext.xml
+                为什么要读取文件呢？
+                    因为在监听器中要创建ApplicationContext对象，需要加载配置文件
+                    /WEB-INF/applicationContext.xml就是监听器默认读取spring配置文件的路径
+
+                    但是我们可以修改默认的文件路径，使用context-param重新指定文件的位置
+
+                    配置监听器：目的是创建容器对象，创建了容器对象，就能把applicationContext.xml配置文件中的所有对象
+                               都创建好了，用户发起请求就可以直接使用对象了
+        -->
+        <context-param>
+            <!--contextConfigLocation:表示配置文件的路径-->
+            <param-name>contextConfigLocation</param-name>
+            <!--自定义配置文件的路径-->
+            <param-value>classpath:applicationContext.xml</param-value>
+        </context-param>
+        <listener>
+            <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        </listener>
+
+2.springmvc的Dispatcher中央处理器对象在初始化时也会创建容器对象
+    案例：FrameWork_视图层框架_SpringMVC框架_02_web开发步骤\src\main\webapp\WEB-INF\web.xml
+
+
+    <!--声明前端控制器-->
+        <!--注意：
+                1.servlet-name的名字是DispatcherServlet的别名
+                  而DispatcherServlet的源代码已经写好了，只需要你声明即可
+                  而controller下的类并不是Servlet类，而是有着相同的功能的普通类而已，
+                  所以无需对这些普通类进行Servlet声明
+
+                2.前端控制器DispatcherServlet在启动tomcat的时候会默认读取spring容器的配置文件信息
+                  但是我们这里启动tomcat报错，报错原因是默认读取文件地址/WEB—INF/springmvc-servlet.xml，
+                  而这个文件在这个位置并不存在
+
+            注意：springmvc创建容器时，默认读取的spring容器配置文件时，默认读取地址是/WEB-INF/<servlet-name>-servlet.xml
+                 <servlet-name>是前端控制器的自定义名称，在这里叫做springmvc
+        -->
+        <servlet>
+            <servlet-name>springmvc</servlet-name>
+            <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+            <!--自定义springMVC读取配置文件的位置-->
+            <init-param>
+                <!--springMVC的配置文件的位置的属性-->
+                <param-name>contextConfigLocation</param-name>
+                <!--指定自定义文件的位置-->
+                <param-value>classpath:springmvc.xml</param-value>
+            </init-param>
+
+
+            <!--在tomcat启动后，创建Servlet对象-->
+            <!--启动时就进行加载
+                    load-on-startup：表示tomcat启动后创建对象的顺序，它的值是整数，数值越小，
+                                     tomcat创建对象时间越早，值是大于或等于0的整数
+            -->
+            <load-on-startup>1</load-on-startup>
+        </servlet>

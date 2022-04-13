@@ -1,0 +1,48 @@
+相对路径：是相对于当前路径下的路径
+https://blog.csdn.net/qq_34769573/article/details/80445681
+
+前端不加后端加
+
+
+1.如果你的资源不能访问，加入${pageContext.request.contextPath}
+          <a href="${pageContext.request.contextPath}/user/some.do">user/some.do的get请求</a>
+2.base标记
+    base标记属于HTML语法范畴，和js无关，和java更没有关系
+    base标记只对当前页面中的所有相对路径起作用，绝对路径不起作用
+    当前网页中的所有相对路径，表面看起来是相对路径，其实加上base上的路径之后就是一个绝对路径了
+
+    <base href="http://www.baidu.com/">
+    这里的末尾的/不能去掉
+    去掉之后img.src图片地址变成
+    http://www.baidu.comimg.src
+
+    http://localhost:8080/webappname/
+    <base href="<%=request.getScheme()%>://<%=request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/">
+
+        等价于以下代码
+
+    String basePath = request.getScheme()+"://"+request.getServername()+":"+request.getServerPort()+request.getContextPath()+"/"
+    <base href="<%=basePath%>">
+
+在jsp，html中使用的地址，都是在前端页面中的地址，都是相对地址地址分类：
+    1.绝对地址，带有协议名称的是绝对地址，http://www.baidu.com，ftp://202.122.23.1
+    2.相对地址，没有协议开头的，例如user/some.do，/user/some.do相对地址不能独立使用，必须有一个参考地址。通过参考地址+相对地址本身才能指定资源。
+        张三同学，1班有张三，2班也有张三
+    3.参考地址
+    1）在你的页面中的，访问地址不加"/"
+        访问的是：http://localhost：8080/ch06_path/index.jsp
+        路径：http://localhost：8080/ch06_path/
+        资源：index.jsp
+
+    在index.jsp发起user/some.do请求，访问地址变为http://localhost：8080/ch06_path/user/some.do
+    当你的地址没有斜杠开头，例如user/some.do，当你点击链接时，访问地址是当前页面的地址加上链接的地址。
+    叫工程路径比较好，其它的都是资源路径。资源路径是相对工程路径来写的
+
+    2）在你的页面中的，访问地址加"/"
+        /在前端对应的是服务器的地址，在后端对应的是项目的地址
+        访问的是：http://localhost：8080/ch06_path/index.jsp
+        路径：http://localhost：8080/ch06_path/
+        资源：index.jsp
+        点击/user/some.do
+        访问地址变为http://localhost：8080/user/some.do
+        参考地址是你的服务器地址，也就是http://localhost：8080

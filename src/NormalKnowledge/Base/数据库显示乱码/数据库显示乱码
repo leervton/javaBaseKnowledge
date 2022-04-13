@@ -1,0 +1,19 @@
+在数据库中文乱码解决：在配置数据库路径url后面加上?useUnicode=true&amp;characterEncoding=UTF-8
+
+
+<!-- 编码过滤器 -->
+    <filter>
+        <filter-name>springfilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springfilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+

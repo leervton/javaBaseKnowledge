@@ -1,0 +1,22 @@
+在往集合中一个一个添加数据的时候，我们必须先将集合的数据结构给确立下来，然后再进行一一添加数据的行为
+    即List list = new ArrayList();
+            list.add();
+            list.add();
+            list.add();
+      Map map = new HashMap();
+            map.put();
+            map.put();
+            map.put();
+    先确立数据结构，再添加数据
+    不允许往数据结构不固定的集合添加数据
+    譬如：
+        List list = null;
+        list.add();
+        //null.add();空指针异常
+        这里会报错，因为数据的结构不知道，所以一个一个添加数据的时候，会报错，报空指针异常
+
+     当然，如果数据结构确立的数据集合是可以直接拿过来用的,这个行为是合法的
+     List list = null;
+     List list =  K.createArrayList();
+
+

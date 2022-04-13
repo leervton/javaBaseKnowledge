@@ -1,0 +1,18 @@
+PO（Persistent Object）持久化对象，存入在数据库中的对象具有持久性
+VO (value Object) 值对象，作为变量使用的对象
+DAO（Data Access Object）数据库访问对象
+BO（Business Object）业务对象
+POJO(Plain Ordinary Java Objec) 普通的简单的javabean
+DTO 数据传输对象
+
+有时VO和DTO并没有做开区分，只不过一个以形参作为数据传递，一个存在于方法内部传递
+ public int transfer(Students stu)//DTO {
+    Teacher tea = new Teacher(); //VO
+ }
+https://blog.csdn.net/chenchunlin526/article/details/69939337
+
+https://blog.csdn.net/bandaoyu/article/details/104967294
+
+bean普通类
+
+entity数据库对应类

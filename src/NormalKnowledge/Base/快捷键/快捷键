@@ -1,0 +1,32 @@
+ctrl+P 查看方法参数
+
+alt+/ 查看构造方法
+
+shift 选取多个内容
+
+alt+鼠标左键 多行操作
+
+alt+insert 唤出常用
+            对文件夹进行alt+insert可以唤出文件创建栏
+
+ctrl+/ 简单注释
+
+ctrl+shift+/ 复杂注释
+
+alt+enter 快速补齐,实现接口类
+
+按住shift+字母 大写变小写，小写变大写
+
+home 光标到行开头
+
+end  光标到行末尾
+
+ctrl+h 快速查看实现类
+
+ctrl+f12 快速查看类中的方法列表
+
+ctrl + alt + o 截图快捷键
+                IEDA中可以快速排除无效的依赖包
+
+alt+shift+↑/↓ 整行代码上下移动
+

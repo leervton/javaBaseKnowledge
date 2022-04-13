@@ -1,0 +1,8 @@
+我们可以不获取容器对象
+而是设出属性，利用注解自动注入的特性，注入到属性中
+
+
+//这里我们不再获取springIOC容器获取bean了，而是使用注解自动注入即可
+    @Autowired
+    private StudentService studentService;
+这样我们就不用找容器对象application了，而是其自动注入了

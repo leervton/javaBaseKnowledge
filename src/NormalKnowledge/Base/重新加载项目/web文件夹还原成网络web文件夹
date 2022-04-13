@@ -1,0 +1,5 @@
+1、选择File ==> Project Structure==>Modules==>点击该项目旁边的倒三角，然后展开并点击web互联网图标蓝色方块文件夹
+2、分别在Development Descriptor栏目和Web Resources Directories栏目把这个路径修改为当前web文件夹的路径
+3.1、修改为当前web项目文件夹下的web.xml
+3.2、修改为当前web项目文件夹（蓝色小点）
+4、点击OK，变成web项目文件夹

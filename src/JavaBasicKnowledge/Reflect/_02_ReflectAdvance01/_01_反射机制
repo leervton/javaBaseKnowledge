@@ -1,0 +1,27 @@
+1)如下代码
+    String invName = request.getParameter("invName");
+    String city = request.getParameter("city");
+    String orgcode = request.getParameter("orgcode");
+    String contactMan = request.getParameter("contactMan");
+    String contactTel = request.getParameter("contactTel");
+    String email = request.getParameter("email");
+    ...
+    ...
+    ...
+    ps.setString(1,"invName")
+    ps.setString(2,"city")
+    ps.setString(3,"orgcode")
+    ps.setString(4,"contactMan")
+    ps.setString(5,"contactTel")
+    ps.setString(6,"email")
+    分析以上编程存在那些缺点？
+        * 代码重复，没有得到复用，如果表单中的数据量比较庞大的话，开发效率较低
+          获取每一个数据都需要编写request.getParameter("业务字段")方法
+        * 给我们一种面向过程的感受，java应该采用面向对象的方式处理数据
+    代码重复大致包括两种：
+        * 功能性重复
+            这种重复很好处理,譬如JDBC代码重复就属于功能性代码重复
+            只要编写一个工具类封装，在工具类中提供一个固定的方法，提供固定的代码
+            即可解决这个问题
+        * 业务逻辑重复
+            这种重复不好处理，这种业务代码重复需要使用反射机制封装解决

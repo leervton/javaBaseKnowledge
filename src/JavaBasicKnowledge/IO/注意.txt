@@ -1,0 +1,3 @@
+注意：idea的默认的根路径是project的路径
+全路径是C:\Users\lee45\IdeaProjects\练习\src\practice.properties
+则等同于：练习\src\practice.properties
