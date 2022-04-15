@@ -64,6 +64,12 @@ javax.servlet-api.jar 是servlet 3.0 版本之后的地址
     log4j-api
     log4j-core
     slf4j-log4j12
+    slf4j-api
+    slf4j-simple
+    slf4j-nop
+
+    myBatis乱码
+    jboss-vfs
 
 
     <!--配置Maven 对resource文件 过滤 -->

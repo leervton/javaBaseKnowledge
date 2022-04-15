@@ -1,1 +1,3 @@
 参照AJAX_05_高阶联系项目优化01
+
+1.tomcat的edit configuration配置中server的url属性名和deployment的application context名字不一样，导致index.jsp无法展示
